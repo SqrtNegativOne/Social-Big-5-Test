@@ -1,0 +1,29 @@
+{% extends base.html %}
+
+{% block body %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label>Gender</label><br>
+        <input type="radio" name="gender" value="male"> Male<br>
+        <input type="radio" name="gender" value="female"> Female<br>
+        <input type="radio" name="gender" value="custom" id="custom-gender"> Custom<br>
+        <input type="file" name="custom_gender_file" id="custom-gender-file" accept=".txt,.json,.png,.jpg" style="display: none;">
+        
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        document.getElementById('custom-gender').addEventListener('change', function() {
+            document.getElementById('custom-gender-file').style.display = 'block';
+        });
+
+        document.querySelectorAll('input[name="gender"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.value !== 'custom') {
+                    document.getElementById('custom-gender-file').style.display = 'none';
+                }
+            });
+        });
+    </script>
+{% endblock %}

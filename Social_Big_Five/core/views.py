@@ -2,12 +2,13 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .forms import TestForm
+from django.contrib.auth import login, authenticate, logout
 
+"""
 with open('questions.md', 'r') as file:
     questions = file.readlines()
     print(questions)
 
-    
 def take_test(request, user_id):
     if request.method == 'POST':
         form = TestForm(request.POST)
@@ -31,4 +32,5 @@ def take_test(request, user_id):
     })
 
 def view_results(request):
-    return render(request, 'view-results.html')
+    return render(request, 'view-results.html')""
+"""
